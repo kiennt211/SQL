@@ -47,6 +47,8 @@ FROM Highschooler H1
 INNER JOIN Friend ON H1.ID = Friend.ID1
 INNER JOIN Highschooler H2 ON H2.ID = Friend.ID2
 WHERE H1.Grade <>H2.Grade )
+AND ID IN(
+	SELECT Friend.ID1 FROM Friend)
 ORDER BY H.Grade, H.Name
 
 -- For each student A who likes a student B where the two are not friends, find if they have a friend C in common (who can introduce them!). For all such trios, return the name and grade of A, B, and C.
